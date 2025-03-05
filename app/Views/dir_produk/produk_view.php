@@ -26,7 +26,7 @@
   <input type="text" id="globalSearch" placeholder="Cari baranng" class="py-2 px-3 border">
   <select id="filterOffice" class="py-2 px-3 border">
     <option value="">Semua</option>
-    <?php foreach($produk as $barang):?>
+    <?php foreach($katego as $barang):?>
     <option value="<?=$barang["nama_kategori"]?>"><?=$barang["nama_kategori"]?></option>
     <?php endforeach ?>
   </select>

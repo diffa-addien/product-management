@@ -18,8 +18,8 @@ class PanelController extends BaseController
     public function listProduk()
     {
         $model = new KategoriModel();
-        $produk = $model->findAll();
-        $data['produk'] = $produk;
+        $katego = $model->findAll();
+        $data['katego'] = $katego;
         return view('dir_produk/produk_view', $data);
     }
 
@@ -30,18 +30,24 @@ class PanelController extends BaseController
 
     public function tambahProduk()
     {
-        return view('dir_produk/tambah_produk');
+        $model = new KategoriModel();
+        $katego = $model->findAll();
+        $data['katego'] = $katego;
+        return view('dir_produk/tambah_produk', $data);
     }
 
     public function updateProduk($produk_id)
     {
         $model = new ProdukModel();
-        $produk = $model->find($produk_id);
+        $data['produk'] = $model->find($produk_id);
+        $katModel = new KategoriModel();
+        $katego = $katModel->findAll();
+        $data['katego'] = $katego;
 
-        if (!$produk) {
+        if (!$data['produk']) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
-        return view('dir_produk/update_produk', ['produk' => $produk]);
+        return view('dir_produk/update_produk', $data);
     }
 }

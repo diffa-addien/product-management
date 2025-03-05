@@ -98,7 +98,7 @@ class ApiProdukController extends BaseController
 
         // Atur validasi khusus untuk gambar
         $rules = [
-            'gambar' => 'uploaded[gambar]|max_size[gambar,102]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+            'gambar' => 'max_size[gambar,102]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
         ];
 
         if (!$this->validate($rules)) {
