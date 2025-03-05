@@ -9,6 +9,10 @@
     float: right;
     right: 0px;
     top: -45px;
+    background-color: green !important;
+    color: #eff !important;
+    border-radius: 4px !important;
+    border: none !important;
   }
   table.w-full{width:100% !important}
 </style>
@@ -22,8 +26,9 @@
   <input type="text" id="globalSearch" placeholder="Cari baranng" class="py-2 px-3 border">
   <select id="filterOffice" class="py-2 px-3 border">
     <option value="">Semua</option>
-    <option value="Lain-Lain">Lain-Lain</option>
-    <option value="London">London</option>
+    <?php foreach($produk as $barang):?>
+    <option value="<?=$barang["nama_kategori"]?>"><?=$barang["nama_kategori"]?></option>
+    <?php endforeach ?>
   </select>
 </div>
 <table id="dataProduk" class="w-full bg-white shadow-md rounded">

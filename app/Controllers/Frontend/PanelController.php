@@ -4,6 +4,7 @@ namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
 use App\Models\ProdukModel;
+use App\Models\KategoriModel;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -16,7 +17,10 @@ class PanelController extends BaseController
 
     public function listProduk()
     {
-        return view('dir_produk/produk_view');
+        $model = new KategoriModel();
+        $produk = $model->findAll();
+        $data['produk'] = $produk;
+        return view('dir_produk/produk_view', $data);
     }
 
     public function profil()
