@@ -3,11 +3,29 @@
 <!-- DataTables CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+<style>
+  .force-right{
+    position: absolute !important;
+    float: right;
+    right: 0px;
+    top: -45px;
+  }
+  table.w-full{width:100% !important}
+</style>
 <?= $this->endSection() ?>
 
 <?= $this->section("content") ?>
 <h2 class="text-2xl font-bold mb-4">Daftar Produk</h2>
 <a href="<?= base_url('list-produk/tambah-produk') ?>" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Tambah Produk</a>
+
+<div class="pb-1">
+  <input type="text" id="globalSearch" placeholder="Cari baranng" class="py-2 px-3 border">
+  <select id="filterOffice" class="py-2 px-3 border">
+    <option value="">Semua</option>
+    <option value="Lain-Lain">Lain-Lain</option>
+    <option value="London">London</option>
+  </select>
+</div>
 <table id="dataProduk" class="w-full bg-white shadow-md rounded">
   <thead>
     <tr class="bg-gray-200">
@@ -60,18 +78,24 @@
       .then(produkData => {
         if (produkData.status === 200) {
 
-          $('#dataProduk').DataTable({
-            dom: 'Bfrtip', // Menampilkan tombol export
-            buttons: [
-              'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+          var table = $('#dataProduk').DataTable({
+            dom: 'Brtip', // Menampilkan tombol export
+            buttons: [{
+              extend: 'excel',
+              text: '🗎 Export Excel', // Tombol dengan ikon
+              className: 'force-right' // Tambahkan class styling
+            }],
+            "ordering": false,
             data: produkData.data,
             columns: [{
                 data: null,
                 render: (data, type, row, meta) => meta.row + 1
               }, // Nomor urut
               {
-                data: "gambar"
+                data: "gambar",
+                render: gambar => `
+                              <img src="${gambar}" class="h-10 w-10 object-cover">
+                `
               },
               {
                 data: "nama_produk"
@@ -93,11 +117,21 @@
               {
                 data: "produk_id",
                 render: id => `
-                            <button class="btn-edit bg-blue-500 text-white px-2 py-1 rounded" data-id="${id}">Edit</button>
-                            <button class="btn-hapus bg-red-500 text-white px-2 py-1 rounded ml-2" data-id="${id}">Hapus</button>
+                            <a href="<?= base_url('list-produk/update-produk') ?>/${id}">Edit</a>
+                            <button onclick="showDeleteModal(${id})" class="text-red-500 hover:underline ml-2">Hapus</button>
                         `
               } // Tombol Edit & Hapus
             ]
+          });
+
+          // Custom search global
+          $('#globalSearch').on('keyup', function() {
+            table.search(this.value).draw();
+          })
+
+          // Custom filter dengan dropdown
+          $('#filterOffice').on('change', function() {
+            table.column(3).search(this.value).draw();
           });
 
           // let html = '';
