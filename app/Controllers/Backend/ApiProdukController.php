@@ -51,7 +51,7 @@ class ApiProdukController extends BaseController
         // Proses upload gambar
         if ($fileGambar->isValid() && !$fileGambar->hasMoved()) {
 
-            $namaFile = "Gambar_Artikel_" . date("Y-m-d_H-i-s") . '.' . $fileGambar->guessExtension(); // Buat nama file unik
+            $namaFile = "Gambar_Produk_" . date("Y-m-d_H-i-s") . '.' . $fileGambar->guessExtension(); // Buat nama file unik
             $fileGambar->move('uploads', $namaFile);
 
             // Tambahkan path file ke data
@@ -113,7 +113,7 @@ class ApiProdukController extends BaseController
         // Proses upload gambar
         if ($fileGambar->isValid() && !$fileGambar->hasMoved()) {
 
-            $namaFile = "Gambar_Artikel_" . date("Y-m-d_H-i-s") . '.' . $fileGambar->guessExtension(); // Buat nama file unik
+            $namaFile = "Gambar_Produk_" . date("Y-m-d_H-i-s") . '.' . $fileGambar->guessExtension(); // Buat nama file unik
             $fileGambar->move('uploads', $namaFile);
 
             // Tambahkan path file ke data

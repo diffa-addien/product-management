@@ -36,4 +36,12 @@ class Home extends BaseController
             return redirect()->to('login');
         }
     }
+
+    public function logout()
+    {
+        $session = session(); // Panggil session
+        $session->destroy();  // Hancurkan session
+
+        return redirect()->to('/login'); // Redirect ke halaman login
+    }
 }

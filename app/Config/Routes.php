@@ -8,13 +8,14 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Home::login');
+$routes->get('/logout', 'Home::logout');
 
 $routes->get('/start-session', 'Home::startSession');
 
-$routes->get('/list-produk', 'Frontend\PanelController::listProduk');
-$routes->get('/profil', 'Frontend\PanelController::profil');
-$routes->get('/list-produk/tambah-produk', 'Frontend\PanelController::tambahProduk');
-$routes->get('/list-produk/update-produk/(:num)', 'Frontend\PanelController::updateProduk/$1');
+$routes->get('/list-produk', 'Frontend\PanelController::listProduk', ['filter' => 'session']);
+$routes->get('/profil', 'Frontend\PanelController::profil', ['filter' => 'session']);
+$routes->get('/list-produk/tambah-produk', 'Frontend\PanelController::tambahProduk', ['filter' => 'session']);
+$routes->get('/list-produk/update-produk/(:num)', 'Frontend\PanelController::updateProduk/$1', ['filter' => 'session']);
 
 
 $routes->post('api/login', 'Backend\AuthController::login');

@@ -23,7 +23,7 @@
 <a href="<?= base_url('list-produk/tambah-produk') ?>" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Tambah Produk</a>
 
 <div class="pb-1">
-  <input type="text" id="globalSearch" placeholder="Cari baranng" class="py-2 px-3 border">
+  <input type="text" id="globalSearch" placeholder="Cari baranng" class="py-2 px-3 text-gray-900 border">
   <select id="filterOffice" class="py-2 px-3 border">
     <option value="">Semua</option>
     <?php foreach($katego as $barang):?>
@@ -110,11 +110,11 @@
               },
               {
                 data: "harga_beli",
-                render: data => `Rp ${data.toLocaleString()}`
+                render: data => `Rp ${new Intl.NumberFormat('en-US').format(data)}`
               },
               {
                 data: "harga_jual",
-                render: data => `Rp ${data.toLocaleString()}`
+                render: data => `Rp ${new Intl.NumberFormat('en-US').format(data)}`
               },
               {
                 data: "stok"

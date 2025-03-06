@@ -17,8 +17,9 @@ class SessionFilter implements FilterInterface
         $jwtExp = $session->get('jwt_exp');
         $jwtToken = $session->get('jwt_token');
 
+        // Redirect ke login jika token tidak ada
         if (!$jwtToken || !$jwtExp) {
-            return service('response')->setStatusCode(401)->setJSON(['error' => 'Unauthorized! Token tidak ditemukan.']);
+            return redirect()->to("login");
         }
 
         $currentTime = time();
@@ -35,10 +36,14 @@ class SessionFilter implements FilterInterface
                 // Simpan ke session
                 $session->set([
                     'jwt_token' => $newToken,
-                    'jwt_exp' => time() + 3600 // Perpanjang 1 jam
+                    'jwt_exp' => time() + 3600, // Perpanjang 1 jam
+                    'username' => $decoded->username,
+                    'data' => $decoded->data
                 ]);
+
             } catch (\Exception $e) {
                 return service('response')->setStatusCode(401)->setJSON(['error' => 'Token tidak valid atau sudah expired.']);
+                
             }
         }
     }

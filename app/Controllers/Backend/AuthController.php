@@ -50,9 +50,5 @@ class AuthController extends BaseController
 
         return $this->response->setJSON($response);
     }
-
-    public function logout()
-    {
-        //
-    }
+    
 }

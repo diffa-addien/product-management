@@ -1,6 +1,7 @@
 <?php
-$uri = service('uri'); // Cara yang disarankan untuk mendapatkan objek URI
+$uri = service('uri'); // Get url segment
 $segmen1 = $uri->getSegment(1);
+$segmen2 = $uri->getSegment(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,6 +72,14 @@ $segmen1 = $uri->getSegment(1);
     <!-- Placeholder for content -->
     <div class="grid grid-cols-1">
       <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center space-x-2  mb-[20px] text-gray-500">
+          <span class="text-gray-400 capitalize"><?=!empty($segmen1) ? str_replace("-", " ", $segmen1) : ""?></span>          
+          <?php if(!empty($segmen2)):?>
+            <span class="text-gray-400">›</span>
+          <span class="font-semibold text-black capitalize"><?=str_replace("-", " ", $segmen2)?></span>
+          <?php endif ?>
+        </div>
+
         <!-- Content dinamis -->
         <?= $this->renderSection('content') ?>
       </div>
