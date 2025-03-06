@@ -9,6 +9,8 @@ Project ini adalah aplikasi berbasis web yang dikembangkan menggunakan PHP denga
 
 Create `.env` to root project and tailor for your app, specifically the baseURL and any database (PostgreSQL) settings.
 
+To install dependencies `composer install` or update with `composer update` Dependencies are usually installed in the `vendor/` directory.
+
 For init database `php spark migrate`
 and dump seeds `php spark db:seed` check `Database/Seeds` to see user account
 
@@ -21,8 +23,8 @@ When updating, check the release notes to see if there are any changes you might
 `vendor/codeigniter4/framework/app`.
 
 ## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
+#### PostgresSQL 17 is recomended.
+#### PHP version 8.1 or higher is required, with the following extensions installed:
 
 - [intl](http://php.net/manual/en/intl.requirements.php)
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
