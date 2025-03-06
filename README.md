@@ -14,14 +14,6 @@ To install dependencies `composer install` or update with `composer update` Depe
 For init database `php spark migrate`
 and dump seeds `php spark db:seed` check `Database/Seeds` to see user account
 
-## Installation & updates
-
-To install dependencies `composer install` or update with `composer update`
-
-When updating, check the release notes to see if there are any changes you might need to apply to your `app` folder. The affected files can be copied or merged from
-
-`vendor/codeigniter4/framework/app`.
-
 ## Server Requirements
 #### PostgresSQL 17 is recomended.
 #### PHP version 8.1 or higher is required, with the following extensions installed:
