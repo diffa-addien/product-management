@@ -1,8 +1,11 @@
 {
   "build": {
     "env": {
-      "CI_ENVIRONMENT": "production"
+      "CI_ENVIRONMENT": "development"
     }
   },
-  "start": "php spark serve --host=0.0.0.0 --port=8080"
+  "deploy": {
+    "startCommand": "php spark serve --host=0.0.0.0 --port=8080 --document-root=public",
+    "restartPolicyType": "always"
+  }
 }
