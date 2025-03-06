@@ -1,7 +1,10 @@
 <?php
 $uri = service('uri'); // Get url segment
+
+$totalSegments = $uri->getTotalSegments();
 $segmen1 = $uri->getSegment(1);
 $segmen2 = $uri->getSegment(2);
+$lastSegment = $uri->getSegment($totalSegments);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +12,7 @@ $segmen2 = $uri->getSegment(2);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel</title>
+  <title><?=!empty($segmen1) ? ucwords(str_replace("-", " ", $lastSegment)) : ""?> | SIMS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">

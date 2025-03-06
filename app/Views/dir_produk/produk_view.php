@@ -110,11 +110,11 @@
               },
               {
                 data: "harga_beli",
-                render: data => `Rp ${new Intl.NumberFormat('en-US').format(data)}`
+                render: data => `${new Intl.NumberFormat('en-US').format(data)}`
               },
               {
                 data: "harga_jual",
-                render: data => `Rp ${new Intl.NumberFormat('en-US').format(data)}`
+                render: data => `${new Intl.NumberFormat('en-US').format(data)}`
               },
               {
                 data: "stok"
