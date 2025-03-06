@@ -4,12 +4,13 @@ FROM php:8.1-apache
 # Set working directory
 WORKDIR /var/www/html
 
-# Install dependensi sistem
+# Install dependensi sistem dan ekstensi PHP yang diperlukan
 RUN apt-get update && apt-get install -y \
+    libicu-dev \
     libzip-dev \
     zip \
     unzip \
-    && docker-php-ext-install zip
+    && docker-php-ext-install intl zip pdo_mysql
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
