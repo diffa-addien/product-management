@@ -5,7 +5,7 @@
     }
   },
   "deploy": {
-    "startCommand": "php spark serve --host=0.0.0.0 --port=8080 --document-root=public",
+    "startCommand": "php spark serve --host=0.0.0.0 --port=$PORT --document-root=public",
     "restartPolicyType": "always"
   }
 }
