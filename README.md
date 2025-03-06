@@ -1,7 +1,7 @@
 
 # Sistem Informasi Management Produk
 
-- [Demo](http://sims-webapp.unaux.com/)
+- [Demo](https://diffaaddien.contohdomain.com/)
 
 ## Tentang project ini
 
