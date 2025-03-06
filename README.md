@@ -1,6 +1,8 @@
 
 # Sistem Informasi Management Produk
 
+- [Demo](http://sims-webapp.unaux.com/)
+
 ## Tentang project ini
 
 Project ini adalah aplikasi berbasis web yang dikembangkan menggunakan PHP dengan framework CodeIgniter 4 (versi 4.6.0) dan database PostgreSQL. Aplikasi ini dirancang untuk mengelola data produk dengan fitur utama seperti login pengguna menggunakan autentikasi JWT (JSON Web Token), CRUD (Create, Read, Update, Delete) untuk produk, serta profil pengguna. Frontend menggunakan controller khusus untuk view dengan styling berbasis Tailwind CSS dan notifikasi melalui Toastr. Sistem login memungkinkan pengguna untuk mengakses fitur setelah autentikasi, sementara fitur CRUD dilengkapi dengan API yang mengembalikan data dalam format JSON, mendukung pengelolaan produk termasuk kategori, harga, stok, dan unggahan gambar. Fitur logout telah diimplementasikan dengan mekanisme penghapusan token lokal dan penambahan ke blacklist di server untuk keamanan. Aplikasi ini juga mencakup validasi data, perhitungan otomatis harga jual (30% dari harga beli), dan tampilan responsif, menjadikannya solusi terpadu untuk manajemen inventaris dengan antarmuka yang modern dan fungsional.
