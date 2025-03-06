@@ -3,9 +3,5 @@
     "env": {
       "CI_ENVIRONMENT": "production"
     }
-  },
-  "deploy": {
-    "startCommand": "service nginx start && php-fpm",
-    "restartPolicyType": "always"
   }
 }
