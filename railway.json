@@ -1,11 +1,11 @@
 {
   "build": {
     "env": {
-      "CI_ENVIRONMENT": "development"
+      "CI_ENVIRONMENT": "production"
     }
   },
   "deploy": {
-    "startCommand": "php spark serve --host=0.0.0.0 --port=$PORT --document-root=public",
+    "startCommand": "service nginx start && php-fpm",
     "restartPolicyType": "always"
   }
 }
